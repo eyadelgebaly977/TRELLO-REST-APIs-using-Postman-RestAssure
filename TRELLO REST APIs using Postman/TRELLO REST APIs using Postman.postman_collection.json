@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "79b80471-4ba7-4529-b9e9-2e268572f621",
+		"name": "TRELLO REST APIs using Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25705182"
+	},
+	"item": [
+		{
+			"name": "Create a new organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"Org_id\", pm.response.json().id);\r",
+							"console.log(pm.response.json().id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/organizations?displayName=Trello_Org_Testing&key={{API_Key}}&token={{API_Token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"organizations"
+					],
+					"query": [
+						{
+							"key": "displayName",
+							"value": "Trello_Org_Testing"
+						},
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Organizations for a member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(pm.globals.get(\"Org_id\"))\r",
+							"pm.globals.get(\"Org_id\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/members/634c1d659f0d4c05aa471ec1/organizations?key={{API_Key}}&token={{API_Token}}&Org_id={{Org_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"634c1d659f0d4c05aa471ec1",
+						"organizations"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						},
+						{
+							"key": "Org_id",
+							"value": "{{Org_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a board inside an organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"Board_id\", pm.response.json().id);\r",
+							"console.log(pm.globals.get(\"Board_id\"))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/?name=Trello_Board_Testing&key={{API_Key}}&token={{API_Token}}&idOrganization={{Org_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Trello_Board_Testing"
+						},
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						},
+						{
+							"key": "idOrganization",
+							"value": "{{Org_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get boards in an organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"Board_id\");\r",
+							"console.log(pm.globals.get(\"Board_id\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/organizations/:Org_id/boards?key={{API_Key}}&token={{API_Token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"organizations",
+						":Org_id",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "Org_id",
+							"value": "{{Org_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"List_id\", pm.response.json().id);\r",
+							"console.log(pm.response.json().id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/lists?name=Trello_List_Testing&idBoard={{Board_id}}&key={{API_Key}}&token={{API_Token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Trello_List_Testing"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{Board_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all lists on a board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"List_id\");\r",
+							"console.log(pm.globals.get(\"List_id\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/:Board_id/lists?key={{API_Key}}&token={{API_Token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						":Board_id",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "Board_id",
+							"value": "{{Board_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive a list",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/lists/:List_id/closed?key={{API_Key}}&token={{API_Token}}&value=true",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists",
+						":List_id",
+						"closed"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						},
+						{
+							"key": "value",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "List_id",
+							"value": "{{List_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a board",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/:Board_id?key={{API_Key}}&token={{API_Token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						":Board_id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "Board_id",
+							"value": "{{Board_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an organization",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/organizations/:Org_id?key={{API_Key}}&token={{API_Token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"organizations",
+						":Org_id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{API_Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{API_Token}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "Org_id",
+							"value": "{{Org_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

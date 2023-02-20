@@ -1,0 +1,39 @@
+{
+	"id": "b2ddb999-a85e-49df-84e0-43f0d8cdd871",
+	"values": [
+		{
+			"key": "API_Token",
+			"value": "ATTA4f02ef0d37719f7666ca052ef13e0af4fa0588940173d30386376d1db6df68a5C30D5513",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "API_Key",
+			"value": "eade88b7f17b831acecced657655821b",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Org_id",
+			"value": "63ee6f2b9fa1585d937d2f0d",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Board_id",
+			"value": "63ee70c9bef8745ad65c1670",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "List_id",
+			"value": "63ee72f3344143559a75d255",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2023-02-20T19:36:21.326Z",
+	"_postman_exported_using": "Postman/10.10.6"
+}
